@@ -35,8 +35,11 @@ NariGinAite=-14
 UmaAite=-16
 RyuAite=-17
 
+#円の大きさ
+Oval_size=10
+
 #表示位置Y
-HyoujiY=110
+HyoujiY=140
 
 #前の位置
 OldClickX=0
@@ -95,10 +98,10 @@ def bamenn():
     global x,y
     cvs.delete("all")
     
-    cvs.create_oval(235,345,245,355,fill="black")
-    cvs.create_oval(475,345,485,355,fill="black")
-    cvs.create_oval(235,585,245,595,fill="black")
-    cvs.create_oval(475,585,485,595,fill="black")
+    cvs.create_oval(235,235+HyoujiY,235+Oval_size,235+HyoujiY+Oval_size,fill="black")
+    cvs.create_oval(475,235+HyoujiY,475+Oval_size,235+HyoujiY+Oval_size,fill="black")
+    cvs.create_oval(235,475+HyoujiY,235+Oval_size,475+HyoujiY+Oval_size,fill="black")
+    cvs.create_oval(475,475+HyoujiY,475+Oval_size,475+HyoujiY+Oval_size,fill="black")
     # 初期盤面
     for y in range(9):
         for x in range(9):
@@ -167,36 +170,27 @@ def bamenn():
                 cvs.create_text(X+40,Y+40,text="馬",font=("Times New Roman",40),angle=180)
 
     # 列
-    cvs.create_text(680,90,text="1",font=("Times New Roman",30))
-    cvs.create_text(600,90,text="2",font=("Times New Roman",30))
-    cvs.create_text(520,90,text="3",font=("Times New Roman",30))
-    cvs.create_text(440,90,text="4",font=("Times New Roman",30))
-    cvs.create_text(360,90,text="5",font=("Times New Roman",30))
-    cvs.create_text(280,90,text="6",font=("Times New Roman",30))
-    cvs.create_text(200,90,text="7",font=("Times New Roman",30))
-    cvs.create_text(120,90,text="8",font=("Times New Roman",30))
-    cvs.create_text(40,90,text="9",font=("Times New Roman",30))
+    cvs.create_text(680,-20+HyoujiY,text="1",font=("Times New Roman",30))
+    cvs.create_text(600,-20+HyoujiY,text="2",font=("Times New Roman",30))
+    cvs.create_text(520,-20+HyoujiY,text="3",font=("Times New Roman",30))
+    cvs.create_text(440,-20+HyoujiY,text="4",font=("Times New Roman",30))
+    cvs.create_text(360,-20+HyoujiY,text="5",font=("Times New Roman",30))
+    cvs.create_text(280,-20+HyoujiY,text="6",font=("Times New Roman",30))
+    cvs.create_text(200,-20+HyoujiY,text="7",font=("Times New Roman",30))
+    cvs.create_text(120,-20+HyoujiY,text="8",font=("Times New Roman",30))
+    cvs.create_text(40,-20+HyoujiY,text="9",font=("Times New Roman",30))
     # 行
-    cvs.create_text(740,150,text="一",font=("Times New Roman",30))
-    cvs.create_text(740,230,text="二",font=("Times New Roman",30))
-    cvs.create_text(740,310,text="三",font=("Times New Roman",30))
-    cvs.create_text(740,390,text="四",font=("Times New Roman",30))
-    cvs.create_text(740,480,text="五",font=("Times New Roman",30))
-    cvs.create_text(740,560,text="六",font=("Times New Roman",30))
-    cvs.create_text(740,640,text="七",font=("Times New Roman",30))
-    cvs.create_text(740,720,text="八",font=("Times New Roman",30))
-    cvs.create_text(740,800,text="九",font=("Times New Roman",30))
+    cvs.create_text(740,40+HyoujiY,text="一",font=("Times New Roman",30))
+    cvs.create_text(740,120+HyoujiY,text="二",font=("Times New Roman",30))
+    cvs.create_text(740,200+HyoujiY,text="三",font=("Times New Roman",30))
+    cvs.create_text(740,280+HyoujiY,text="四",font=("Times New Roman",30))
+    cvs.create_text(740,360+HyoujiY,text="五",font=("Times New Roman",30))
+    cvs.create_text(740,440+HyoujiY,text="六",font=("Times New Roman",30))
+    cvs.create_text(740,520+HyoujiY,text="七",font=("Times New Roman",30))
+    cvs.create_text(740,600+HyoujiY,text="八",font=("Times New Roman",30))
+    cvs.create_text(740,680+HyoujiY,text="九",font=("Times New Roman",30))
 
 bamenn()
-
-
-#        susumu=0
-#        sx=x
-#        sy=y
-#        if board[y+1][x]==0:
-#            susumu+1
-#            sy=1
-#            board[sy][sx]=1
 
 def click(e):
     global ugokerumasuhu
