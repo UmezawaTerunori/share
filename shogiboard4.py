@@ -59,6 +59,13 @@ board=[
     [2,3,4,5,8,5,4,3,2],
 ]
 
+#王、飛、角、金、銀、桂、香、歩
+#持ち駒
+motigomalist=[0,0,0,0,0,0,0,0]
+motigomalistaite=[0,0,0,0,0,0,0,0]
+motteirukazulist=[0,0,0,0,0,0,0,0]
+motteirukazulistaite=[0,0,0,0,0,0,0,0]
+
 """
 board=[
     [-2,-3,-4,-5,-8,-5,-4,-3,-2],
