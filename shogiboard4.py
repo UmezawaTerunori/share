@@ -42,8 +42,9 @@ Oval_size=10
 HyoujiY=140
 
 #前の位置
-OldClickX=0
-OldClickY=0
+OUTRANGEVALUE=-1
+OldClickX=OUTRANGEVALUE #初期値を範囲外にする
+OldClickY=OUTRANGEVALUE #初期値を範囲外にする
 
 ugokuclick=0
 
@@ -63,8 +64,8 @@ board=[
 #持ち駒
 motigomalist=[0,0,0,0,0,0,0,0]
 motigomalistaite=[0,0,0,0,0,0,0,0]
-motteirukazulist=[0,0,0,0,0,0,0,0]
-motteirukazulistaite=[0,0,0,0,0,0,0,0]
+# motteirukazulist=[0,0,0,0,0,0,0,0]
+# motteirukazulistaite=[0,0,0,0,0,0,0,0]
 
 """
 board=[
@@ -82,24 +83,56 @@ board=[
 
 def motiKoma(n):
     global Ox,Oy
-
+    count=0
+    i=0
     Ox=0*80+40
     Oy=9*80+40+HyoujiY
-    if abs(n)==(1 or 11):
-        cvs.create_text(Ox,Oy,text="歩",font=("Times New Roman",40))
-    if abs(n)==(2 or 12):
-        cvs.create_text(Ox+80,Oy,text="香",font=("Times New Roman",40))
-    if abs(n)==(3 or 13):
-        cvs.create_text(Ox+160,Oy,text="桂",font=("Times New Roman",40))
-    if abs(n)==(4 or 14):
-        cvs.create_text(Ox+240,Oy,text="銀",font=("Times New Roman",40))
-    if abs(n)==(5 or 15):
-        cvs.create_text(Ox+320,Oy,text="金",font=("Times New Roman",40))
-    if abs(n)==(6 or 16):
-        cvs.create_text(Ox+400,Oy,text="角",font=("Times New Roman",40))
-    if abs(n)==(7 or 17):
-        cvs.create_text(Ox+480,Oy,text="飛",font=("Times New Roman",40))
 
+    if n < 0:
+        if abs(n)==(1 or 11):
+            count = motigomalist[7]+1
+            motigomalist[7]=count
+        if abs(n)==(2 or 12):
+            count = motigomalist[6]+1
+            motigomalist[6]=count
+        if abs(n)==(3 or 13):
+            count = motigomalist[5]+1
+            motigomalist[5]=count    
+        if abs(n)==(4 or 14):
+            count = motigomalist[4]+1
+            motigomalist[4]=count
+        if abs(n)==(5 or 15):
+            count = motigomalist[3]+1
+            motigomalist[3]=count
+        if abs(n)==(6 or 16):
+            count = motigomalist[2]+1
+            motigomalist[2]=count
+        if abs(n)==(7 or 17):
+            count = motigomalist[1]+1
+            motigomalist[1]=count
+
+    if n > 0:
+        if abs(n)==(1 or 11):
+            count = motigomalistaite[7]+1
+            motigomalistaite[7]=count
+        if abs(n)==(2 or 12):
+            count = motigomalistaite[6]+1
+            motigomalistaite[6]=count
+        if abs(n)==(3 or 13):
+            count = motigomalistaite[5]+1
+            motigomalistaite[5]=count    
+        if abs(n)==(4 or 14):
+            count = motigomalistaite[4]+1
+            motigomalistaite[4]=count
+        if abs(n)==(5 or 15):
+            count = motigomalistaite[3]+1
+            motigomalistaite[3]=count
+        if abs(n)==(6 or 16):
+            count = motigomalistaite[2]+1
+            motigomalistaite[2]=count
+        if abs(n)==(7 or 17):
+            count = motigomalistaite[1]+1
+            motigomalistaite[1]=count
 
 def bamenn():
     global x,y
@@ -197,6 +230,65 @@ def bamenn():
     cvs.create_text(740,600+HyoujiY,text="八",font=("Times New Roman",30))
     cvs.create_text(740,680+HyoujiY,text="九",font=("Times New Roman",30))
 
+
+    Ty=0*80-80+HyoujiY
+    Ox=0*80+40
+    Oy=9*80+40+HyoujiY
+
+    #持ち駒
+    """
+    cvs.create_text(Ox,Ty,text="歩",font=("Times New Roman",25,"bold"), angle=180)
+    cvs.create_text(Ox+80,Ty,text="香",font=("Times New Roman",25,"bold"),angle=180)
+    cvs.create_text(Ox+160,Ty,text="桂",font=("Times New Roman",25,"bold"),angle=180)
+    cvs.create_text(Ox+240,Ty,text="銀",font=("Times New Roman",25,"bold"),angle=180)
+    cvs.create_text(Ox+320,Ty,text="金",font=("Times New Roman",25,"bold"),angle=180)
+    cvs.create_text(Ox+400,Ty,text="角",font=("Times New Roman",25,"bold"),angle=180)
+    cvs.create_text(Ox+480,Ty,text="飛",font=("Times New Roman",25,"bold"),angle=180)
+    """
+    if not motigomalistaite[7]==0:
+        cvs.create_text(Ox,Ty,text="歩",font=("Times New Roman",25,"bold"), angle=180)
+        cvs.create_text(Ox+10*0,Ty-20,text=motigomalistaite[7],font=("Times New Roman",25,"bold"), angle=180)
+    if not motigomalistaite[6]==0:
+        cvs.create_text(Ox+80,Ty,text="香",font=("Times New Roman",25,"bold"), angle=180)
+        cvs.create_text(Ox+80,Ty-20,text=motigomalistaite[6],font=("Times New Roman",25,"bold"), angle=180)
+    if not motigomalistaite[5]==0:
+        cvs.create_text(Ox+160,Ty,text="桂",font=("Times New Roman",25,"bold"), angle=180)
+        cvs.create_text(Ox+160,Ty-20,text=motigomalistaite[5],font=("Times New Roman",25,"bold"), angle=180)
+    if not motigomalistaite[4]==0:
+        cvs.create_text(Ox+240,Ty,text="銀",font=("Times New Roman",25,"bold"), angle=180)
+        cvs.create_text(Ox+240,Ty-20,text=motigomalistaite[4],font=("Times New Roman",25,"bold"), angle=180)
+    if not motigomalistaite[3]==0:
+        cvs.create_text(Ox+320,Ty,text="金",font=("Times New Roman",25,"bold"), angle=180)
+        cvs.create_text(Ox+320,Ty-20,text=motigomalistaite[3],font=("Times New Roman",25,"bold"), angle=180)
+    if not motigomalistaite[2]==0:
+        cvs.create_text(Ox+400,Ty,text="角",font=("Times New Roman",25,"bold"), angle=180)
+        cvs.create_text(Ox+400,Ty-20,text=motigomalistaite[2],font=("Times New Roman",25,"bold"), angle=180)
+    if not motigomalistaite[1]==0:
+        cvs.create_text(Ox+480,Ty,text="飛",font=("Times New Roman",25,"bold"), angle=180)
+        cvs.create_text(Ox+480,Ty-20,text=motigomalistaite[1],font=("Times New Roman",25,"bold"), angle=180)
+
+    if not motigomalist[7]==0:
+        cvs.create_text(Ox,Oy,text="歩",font=("Times New Roman",25,"bold"))
+        cvs.create_text(Ox+10*0,Oy+20,text=motigomalist[7],font=("Times New Roman",25,"bold"))
+    if not motigomalist[6]==0:
+        cvs.create_text(Ox+80,Oy,text="香",font=("Times New Roman",25,"bold"))
+        cvs.create_text(Ox+80,Oy+20,text=motigomalist[6],font=("Times New Roman",25,"bold"))
+    if not motigomalist[5]==0:
+        cvs.create_text(Ox+160,Oy,text="桂",font=("Times New Roman",25,"bold"))
+        cvs.create_text(Ox+160,Oy+20,text=motigomalist[5],font=("Times New Roman",25,"bold"))
+    if not motigomalist[4]==0:
+        cvs.create_text(Ox+240,Oy,text="銀",font=("Times New Roman",25,"bold"))
+        cvs.create_text(Ox+240,Oy+20,text=motigomalist[4],font=("Times New Roman",25,"bold"))
+    if not motigomalist[3]==0:
+        cvs.create_text(Ox+320,Oy,text="金",font=("Times New Roman",25,"bold"))
+        cvs.create_text(Ox+320,Oy+20,text=motigomalist[3],font=("Times New Roman",25,"bold"))
+    if not motigomalist[2]==0:
+        cvs.create_text(Ox+400,Oy,text="角",font=("Times New Roman",25,"bold"))
+        cvs.create_text(Ox+400,Oy+20,text=motigomalist[2],font=("Times New Roman",25,"bold"))
+    if not motigomalist[1]==0:
+        cvs.create_text(Ox+480,Oy,text="飛",font=("Times New Roman",25,"bold"))
+        cvs.create_text(Ox+480,Oy+20,text=motigomalist[1],font=("Times New Roman",25,"bold"))
+
 bamenn()
 
 def click(e):
@@ -215,13 +307,14 @@ def click(e):
     if mx>8:mx=8
     if my>8:my=8
     
-    if OldClickX==0: # also Y==0
+    if OldClickX==OUTRANGEVALUE: # also Y==OUTRANGEVALUE
         if not board[my][mx]==0:
             OldClickX=mx
             OldClickY=my
             ugokukoma=board[my][mx]
         else:
-            OldClickX=0
+            OldClickX=OUTRANGEVALUE
+            OldClickY=OUTRANGEVALUE
     else:
         if mx==OldClickX and my==OldClickY:
             board[my][mx]=ugokukoma
@@ -238,15 +331,16 @@ def click(e):
                     board[my][mx]=(ugokukoma+10)*(-1)
 
         else:
+            TottaKoma=board[my][mx]
+            #motiKoma(TottaKoma) #とった駒（のみ）を表示
             board[my][mx]=ugokukoma
             board[OldClickY][OldClickX]=0 #空白
         
-        OldClickX=0
-        OldClickY=0
+        OldClickX=OUTRANGEVALUE
+        OldClickY=OUTRANGEVALUE
 
+        motiKoma(TottaKoma) #とった駒（のみ）を表示
         bamenn()
-    #   TottaKoma=board[my][mx]
-    #   motiKoma(TottaKoma) #とった駒（のみ）を表示
  #   if board[my][my]==0:
 
 
